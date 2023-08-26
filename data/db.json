@@ -1,0 +1,67 @@
+{
+  "employees": [
+    {
+      "id": "1",
+      "name": "John Doe",
+      "address": "123 Main Street",
+      "city": "New York",
+      "pinCode": "10001",
+      "country": "USA"
+    },
+    {
+      "id": "2",
+      "name": "Jane Smith",
+      "address": "456 Elm Avenue",
+      "city": "Los Angeles",
+      "pinCode": "90001",
+      "country": "USA"
+    },
+    {
+      "id": "3",
+      "name": "Michael Johnson",
+      "address": "789 Oak Drive",
+      "city": "Chicago",
+      "pinCode": "60601",
+      "country": "USA"
+    },
+    {
+      "id": "4",
+      "name": "Sophia Lee",
+      "address": "987 Pine Street",
+      "city": "Toronto",
+      "pinCode": "M5V 2J6",
+      "country": "Canada"
+    },
+    {
+      "id": "5",
+      "name": "Luis Garcia",
+      "address": "234 Maple Avenue",
+      "city": "Mexico City",
+      "pinCode": "11000",
+      "country": "Mexico"
+    }
+  ],
+  "tree": [
+    {
+      "name": "USA",
+      "children": [
+        {
+          "name": "New York",
+          "children": [
+            { "name": "New York city" },
+            { "name": "Buffalo" },
+            { "name": "Albany" }
+          ]
+        },
+        {
+          "name": "Alabama",
+          "children": [
+            { "name": "Alexander City" },
+            { "name": "Athens" },
+            { "name": "Clanton" }
+          ]
+        }
+      ]
+    }
+  ]
+}
