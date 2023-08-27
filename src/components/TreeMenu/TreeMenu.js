@@ -1,19 +1,10 @@
-import { React, useState } from "react";
+import { React } from "react";
 import TreeView from "@mui/lab/TreeView";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 import TreeItem from "@mui/lab/TreeItem";
 
 function TreeMenu({ data, handleSelection }) {
-  // const renderTree = (nodes) =>
-  //   nodes.forEach((obj, index) => {
-  //     <TreeItem key={obj.id} nodeId={obj.id} label={obj.name}>
-  //       {Array.isArray(obj.children)
-  //         ? obj.children.map((node) => renderTree(node))
-  //         : null}
-  //     </TreeItem>;
-  //   });
-
   const renderTree = (nodes) =>
     nodes.map((obj) => (
       <TreeItem key={obj.id} nodeId={obj.id} label={obj.name}>
