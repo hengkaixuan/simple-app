@@ -4,10 +4,6 @@ function Profile() {
   const [userId, setUserId] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-  };
-
   const handleClose = () => {
     setUserId("");
     setPassword("");
@@ -46,15 +42,14 @@ function Profile() {
             <button
               type="submit"
               className="btn btn-primary mb-3"
-              onClick={handleSubmit}
               data-bs-toggle="modal"
-              data-bs-target="#myModal"
+              data-bs-target="#infoModal"
             >
               Submit
             </button>
           </div>
 
-          <div className="modal" id="myModal" tabindex="-1">
+          <div className="modal" id="infoModal" tabindex="-1">
             <div className="modal-dialog">
               <div className="modal-content">
                 <div className="modal-header">
