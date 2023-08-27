@@ -3,26 +3,52 @@ import "./Home.css";
 import { Link } from "react-router-dom";
 import useFetch from "../../utils/useFetch";
 import TreeMenu from "../../components/TreeMenu/TreeMenu";
-import DynamicTreeView from "../../components/TreeMenu/DynamicTreeView";
 
 const treeData = [
   {
+    id: "1",
     name: "USA",
     children: [
       {
+        id: "2",
         name: "New York",
         children: [
-          { name: "New York city" },
-          { name: "Buffalo" },
-          { name: "Albany" },
+          { id: "3", name: "New York city" },
+          { id: "4", name: "Buffalo" },
+          { id: "5", name: "Albany" },
         ],
       },
       {
+        id: "6",
         name: "Alabama",
         children: [
-          { name: "Alexander City" },
-          { name: "Athens" },
-          { name: "Clanton" },
+          { id: "7", name: "Alexander City" },
+          { id: "8", name: "Athens" },
+          { id: "9", name: "Clanton" },
+        ],
+      },
+    ],
+  },
+  {
+    id: "10",
+    name: "Canada",
+    children: [
+      {
+        id: "11",
+        name: "Ontario",
+        children: [
+          { id: "12", name: "Bancroft" },
+          { id: "13", name: "Cornwall" },
+          { id: "14", name: "Hamilton" },
+        ],
+      },
+      {
+        id: "15",
+        name: "British Columbia",
+        children: [
+          { id: "16", name: "Delta" },
+          { id: "17", name: "Nelson" },
+          { id: "18", name: "Victoria" },
         ],
       },
     ],
@@ -30,15 +56,62 @@ const treeData = [
 ];
 
 function Home() {
-  const { data: employees } = useFetch("http://localhost:8000/employees");
+  const { data: customers } = useFetch("http://localhost:8000/customers");
+  const [selectedName, setSelectedName] = useState("");
+  const [filteredCustomers, setFilteredCustomers] = useState([]);
+
+  useEffect(() => {
+    setFilteredCustomers(customers);
+  }, [customers]);
+
+  const handleSelection = (event, nodeIds) => {
+    console.log("nodeIds" + nodeIds);
+    const selectedName = findNameById(treeData, nodeIds);
+    console.log("selectedName" + selectedName);
+
+    if (selectedName) {
+      setSelectedName(selectedName);
+      const filtered = customers.filter((customer) => {
+        return (
+          customer.country === selectedName || customer.city === selectedName
+        );
+      });
+      setFilteredCustomers(filtered);
+    }
+  };
+  const findNameById = (data, targetId) => {
+    for (const obj of data) {
+      const result = findNameByIdRecursive(obj, targetId);
+      if (result) {
+        return result;
+      }
+    }
+    return null;
+  };
+
+  const findNameByIdRecursive = (obj, targetId) => {
+    if (obj.id === targetId) {
+      return obj.name;
+    }
+
+    if (obj.children) {
+      for (const child of obj.children) {
+        const result = findNameByIdRecursive(child, targetId);
+        if (result) {
+          return result;
+        }
+      }
+    }
+    return null;
+  };
 
   return (
     <div div className="p-4 container-fluid">
       <div className="row">
-        <div className="col-4">
-          <TreeMenu data={treeData} />
+        <div className="col-3">
+          <TreeMenu data={treeData} handleSelection={handleSelection} />
         </div>
-        <div className="col-8">
+        <div className="col-9">
           <h3 style={{ marginBottom: "8px" }}>Customer Details</h3>
           <div className="py-4">
             <table class="table border shadow">
@@ -54,18 +127,18 @@ function Home() {
                 </tr>
               </thead>
               <tbody>
-                {employees.map((employee, index) => (
+                {filteredCustomers.map((customer, index) => (
                   <tr>
                     <th scope="row" key={index}>
                       {index + 1}
                     </th>
-                    <td>{employee.name}</td>
-                    <td>{employee.address}</td>
-                    <td>{employee.city}</td>
-                    <td>{employee.pinCode}</td>
-                    <td>{employee.country}</td>
+                    <td>{customer.name}</td>
+                    <td>{customer.address}</td>
+                    <td>{customer.city}</td>
+                    <td>{customer.pinCode}</td>
+                    <td>{customer.country}</td>
                     <td>
-                      <Link className="btn" to={`/employees/${employee.id}`}>
+                      <Link className="btn" to={`/customers/${customer.id}`}>
                         <i
                           className="bi bi-eye-fill"
                           style={{ color: "DodgerBlue" }}

@@ -4,36 +4,36 @@ import useFetch from "../../../utils/useFetch";
 
 function View() {
   const { id } = useParams();
-  const { data: employee } = useFetch(`http://localhost:8000/employees/${id}`);
+  const { data: customer } = useFetch(`http://localhost:8000/customers/${id}`);
 
   return (
     <div className="p-4 container-fluid">
       <div className="row">
         <div className="col-md-6 offset-md-3 border rounded p-4 mt-2 shadow">
-          <h2 className="text-center m-4">Employee Details</h2>
+          <h2 className="text-center m-4">Customer Details</h2>
           <div className="card">
             <div className="card-header">
-              Details of employee #{id}:
+              Details of customer #{id}:
               <ul className="list-group list-group-flush my-2">
                 <li className="list-group-item">
                   <b>Name: </b>
-                  <span>{employee.name}</span>
+                  <span>{customer.name}</span>
                 </li>
                 <li className="list-group-item">
                   <b>Address: </b>
-                  <span>{employee.address}</span>
+                  <span>{customer.address}</span>
                 </li>
                 <li className="list-group-item">
                   <b>City: </b>
-                  <span>{employee.city}</span>
+                  <span>{customer.city}</span>
                 </li>
                 <li className="list-group-item">
                   <b>Pin code: </b>
-                  <span>{employee.pinCode}</span>
+                  <span>{customer.pinCode}</span>
                 </li>
                 <li className="list-group-item">
                   <b>Country: </b>
-                  <span>{employee.country}</span>
+                  <span>{customer.country}</span>
                 </li>
               </ul>
             </div>

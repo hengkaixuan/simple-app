@@ -1,4 +1,4 @@
-import React from "react";
+import { React, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./Sidebar.css";
 
@@ -6,16 +6,17 @@ const Sidebar = () => {
   return (
     <div className="container-fluid">
       <div className="row">
-        <div className="col-auto min-vh-100">
-          <ul class="nav nav-tabs flex-column" id="myTab" role="tablist">
-            <li class="nav-item">
+        <div className="col-auto min-vh-100 h-100">
+          <ul className="nav nav-tabs flex-column" id="myTab" role="tablist">
+            <li className="nav-item">
               <a
-                class="nav-link"
+                className="nav-link active"
                 id="home-tab"
                 data-toggle="tab"
+                data-bs-target="#nav-home"
                 href="/"
                 role="tab"
-                aria-controls="home"
+                aria-controls="nav-home"
                 aria-selected="true"
               >
                 Home
@@ -23,7 +24,7 @@ const Sidebar = () => {
             </li>
             <li className="nav-item">
               <a
-                class="nav-link active"
+                className="nav-link"
                 id="profile-tab"
                 data-toggle="tab"
                 href="/profile"
@@ -34,9 +35,9 @@ const Sidebar = () => {
                 Profile
               </a>
             </li>
-            <li class="nav-item">
+            <li className="nav-item">
               <a
-                class="nav-link"
+                className="nav-link"
                 id="messages-tab"
                 data-toggle="tab"
                 href="/messages"
@@ -47,9 +48,9 @@ const Sidebar = () => {
                 Messages
               </a>
             </li>
-            <li class="nav-item">
+            <li className="nav-item">
               <a
-                class="nav-link"
+                className="nav-link"
                 id="settings-tab"
                 data-toggle="tab"
                 href="/settings"

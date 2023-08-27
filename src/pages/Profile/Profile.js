@@ -8,30 +8,37 @@ function Profile() {
     e.preventDefault();
   };
 
+  const handleClose = () => {
+    setUserId("");
+    setPassword("");
+  };
+
   return (
     <div className="p-4 container-fluid">
       <div className="row">
         <div className="col-md-6 offset-md-3 border rounded p-4 mt-4 shadow">
           <h2 className="text-center m-4">Login Form</h2>
-          <div class="mb-3">
+          <div className="mb-3">
             <label htmlFor="userId" class="form-label">
               User Id
             </label>
             <input
               type="text"
-              class="form-control"
+              className="form-control"
               placeholder="name@example.com"
+              value={userId}
               onChange={(e) => setUserId(e.target.value)}
             />
           </div>
-          <div class="mb-3">
+          <div className="mb-3">
             <label htmlFor="password" class="form-label">
               Password
             </label>
             <input
               type="password"
-              class="form-control"
+              className="form-control"
               placeholder="password"
+              value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
           </div>
@@ -47,27 +54,28 @@ function Profile() {
             </button>
           </div>
 
-          <div class="modal" id="myModal" tabindex="-1">
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title">Info</h5>
+          <div className="modal" id="myModal" tabindex="-1">
+            <div className="modal-dialog">
+              <div className="modal-content">
+                <div className="modal-header">
+                  <h5 className="modal-title">Info</h5>
                   <button
                     type="button"
-                    class="btn-close"
+                    className="btn-close"
                     data-bs-dismiss="modal"
                     aria-label="Close"
                   ></button>
                 </div>
-                <div class="modal-body">
+                <div className="modal-body">
                   <p>User Id: {userId}</p>
                   <p>Password: {password}</p>
                 </div>
-                <div class="modal-footer">
+                <div className="modal-footer">
                   <button
                     type="button"
-                    class="btn btn-secondary"
+                    className="btn btn-secondary"
                     data-bs-dismiss="modal"
+                    onClick={handleClose}
                   >
                     Close
                   </button>
