@@ -1,70 +1,38 @@
-import { useState } from "react";
-import { ListGroup, Button } from "react-bootstrap";
-import "./TreeMenu.css";
+import { React, useState } from "react";
+import TreeView from "@mui/lab/TreeView";
+import AddIcon from "@mui/icons-material/Add";
+import RemoveIcon from "@mui/icons-material/Remove";
+import TreeItem from "@mui/lab/TreeItem";
 
-const TreeNode = ({ node, onToggle }) => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [selected, setSelected] = useState(false);
-  const [selectedItem, setSelectedItem] = useState("");
+function TreeMenu({ data, handleSelection }) {
+  // const renderTree = (nodes) =>
+  //   nodes.forEach((obj, index) => {
+  //     <TreeItem key={obj.id} nodeId={obj.id} label={obj.name}>
+  //       {Array.isArray(obj.children)
+  //         ? obj.children.map((node) => renderTree(node))
+  //         : null}
+  //     </TreeItem>;
+  //   });
 
-  const handleToggle = () => {
-    setIsOpen(!isOpen);
-    onToggle(node);
-  };
-
-  const handleClick = (e) => {
-    setSelectedItem(e);
-    console.log("val:" + selectedItem);
-  };
-
-  if (node.children && node.children.length > 0) {
-    return (
-      <ListGroup.Item
-        className={selected ? "selected" : ""}
-        onClick={(e) => handleClick(e.target.innerText)}
-      >
-        <Button className="toggle-btn" onClick={handleToggle}>
-          {isOpen ? (
-            <i className="bi bi-dash" style={{ color: "black" }}></i>
-          ) : (
-            <i class="bi bi-plus" style={{ color: "black" }}></i>
-          )}
-        </Button>
-        {node.name}
-        {isOpen && (
-          <ListGroup variant="flush">
-            {node.children.map((childNode, index) => (
-              <TreeNode key={index} node={childNode} onToggle={onToggle} />
-            ))}
-          </ListGroup>
-        )}
-      </ListGroup.Item>
-    );
-  } else {
-    return (
-      <ListGroup.Item
-        className={selected ? "selected" : ""}
-        onClick={(e) => handleClick(e.target.innerText)}
-      >
-        {node.name}
-      </ListGroup.Item>
-    );
-  }
-};
-
-function TreeMenu({ data }) {
-  const handleToggle = (toggledNode) => {
-    // Implement toggle logic here if needed
-    console.log("Toggled:", toggledNode);
-  };
+  const renderTree = (nodes) =>
+    nodes.map((obj) => (
+      <TreeItem key={obj.id} nodeId={obj.id} label={obj.name}>
+        {Array.isArray(obj.children) ? renderTree(obj.children) : null}
+      </TreeItem>
+    ));
 
   return (
-    <div className="p-4">
-      <ListGroup>
-        {data.map((node, index) => (
-          <TreeNode key={index} node={node} onToggle={handleToggle} />
-        ))}
-      </ListGroup>
+    <div className="p-4 container-fluid border">
+      <TreeView
+        aria-label="rich object"
+        defaultCollapseIcon={<RemoveIcon />}
+        defaultExpanded={["root"]}
+        defaultExpandIcon={<AddIcon />}
+        sx={{ flexGrow: 1, maxWidth: 500, overflowY: "auto" }}
+        onNodeSelect={handleSelection}
+      >
+        {renderTree(data)}
+      </TreeView>
     </div>
   );
 }

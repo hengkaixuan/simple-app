@@ -1,5 +1,5 @@
 {
-  "employees": [
+  "customers": [
     {
       "id": "1",
       "name": "John Doe",
@@ -30,38 +30,55 @@
       "address": "987 Pine Street",
       "city": "Toronto",
       "pinCode": "M5V 2J6",
-      "country": "Canada"
+      "country": "New York city"
     },
     {
       "id": "5",
       "name": "Luis Garcia",
       "address": "234 Maple Avenue",
-      "city": "Mexico City",
+      "city": "Trail",
       "pinCode": "11000",
-      "country": "Mexico"
-    }
-  ],
-  "tree": [
+      "country": "British Columbia"
+    },
     {
-      "name": "USA",
-      "children": [
-        {
-          "name": "New York",
-          "children": [
-            { "name": "New York city" },
-            { "name": "Buffalo" },
-            { "name": "Albany" }
-          ]
-        },
-        {
-          "name": "Alabama",
-          "children": [
-            { "name": "Alexander City" },
-            { "name": "Athens" },
-            { "name": "Clanton" }
-          ]
-        }
-      ]
+      "id": "6",
+      "name": "Emily Johnson",
+      "address": "567 Oak Lane",
+      "city": "London",
+      "pinCode": "SW1A 1AA",
+      "country": "Buffalo"
+    },
+    {
+      "id": "7",
+      "name": "Miguel Torres",
+      "address": "789 Palm Street",
+      "city": "Clanton",
+      "pinCode": "28001",
+      "country": "USA"
+    },
+    {
+      "id": "8",
+      "name": "Isabella Chen",
+      "address": "123 Cherry Blossom Ave",
+      "city": "Victoria",
+      "pinCode": "100000",
+      "country": "Canada"
+    },
+    {
+      "id": "9",
+      "name": "Hiroshi Tanaka",
+      "address": "456 Sakura Street",
+      "city": "Alabama",
+      "pinCode": "100-0001",
+      "country": "USA"
+    },
+    {
+      "id": "10",
+      "name": "Maria dos Santos",
+      "address": "789 Copacabana Ave",
+      "city": "Victoria",
+      "pinCode": "22040-001",
+      "country": "Canada"
     }
   ]
 }
