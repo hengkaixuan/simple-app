@@ -17,7 +17,7 @@ function TreeMenu({ data, handleSelection }) {
       <TreeView
         aria-label="rich object"
         defaultCollapseIcon={<RemoveIcon />}
-        defaultExpanded={["root"]}
+        defaultExpanded={["1"]}
         defaultExpandIcon={<AddIcon />}
         sx={{ flexGrow: 1, maxWidth: 500, overflowY: "auto" }}
         onNodeSelect={handleSelection}

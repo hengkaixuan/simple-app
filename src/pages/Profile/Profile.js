@@ -15,7 +15,7 @@ function Profile() {
         <div className="col-md-6 offset-md-3 border rounded p-4 mt-4 shadow">
           <h2 className="text-center m-4">Login Form</h2>
           <div className="mb-3">
-            <label htmlFor="userId" class="form-label">
+            <label htmlFor="userId" className="form-label">
               User Id
             </label>
             <input
@@ -27,7 +27,7 @@ function Profile() {
             />
           </div>
           <div className="mb-3">
-            <label htmlFor="password" class="form-label">
+            <label htmlFor="password" className="form-label">
               Password
             </label>
             <input

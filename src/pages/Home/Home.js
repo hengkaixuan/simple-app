@@ -114,7 +114,7 @@ function Home() {
         <div className="col-9">
           <h3 style={{ marginBottom: "8px" }}>Customer Details</h3>
           <div className="py-4">
-            <table class="table border shadow">
+            <table className="table border shadow">
               <thead>
                 <tr>
                   <th scope="col">#</th>
